@@ -9,3 +9,6 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
 AllCops:
   TargetRubyVersion: 4.0
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'db/schema*.rb'
