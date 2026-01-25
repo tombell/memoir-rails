@@ -31,7 +31,7 @@ module V1
       pagination = jsonapi_pagination_meta(resources)
 
       meta = {}
-      meta.merge!({ pagination: }) if pagination.present?
+      meta.merge!(pagination:) if pagination.present?
       meta
     end
   end
