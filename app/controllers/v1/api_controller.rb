@@ -4,8 +4,8 @@ module V1
     include JSONAPI::Fetching
     include JSONAPI::Pagination
 
-    MIN_PER_PAGE = 1.freeze
-    MAX_PER_PAGE = 100.freeze
+    MIN_PER_PAGE = 1
+    MAX_PER_PAGE = 100
 
     private
 
@@ -31,7 +31,7 @@ module V1
       pagination = jsonapi_pagination_meta(resources)
 
       meta = {}
-      meta.merge!({ pagination: }) if pagination.present?
+      meta.merge!(pagination:) if pagination.present?
       meta
     end
   end
