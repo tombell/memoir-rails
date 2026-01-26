@@ -5,6 +5,8 @@ module V1
     include JSONAPI::Filtering
     include JSONAPI::Pagination
 
+    rescue_from ActiveRecord::RecordInvalid, with: :render_jsonapi_record_invalid
+
     MIN_PER_PAGE = 1
     MAX_PER_PAGE = 100
 
@@ -29,11 +31,11 @@ module V1
     end
 
     def jsonapi_meta(resources)
-      pagination = jsonapi_pagination_meta(resources)
+      {pagination: jsonapi_pagination_meta(resources)}.compact_blank
+    end
 
-      meta = {}
-      meta.merge!(pagination:) if pagination.present?
-      meta
+    def render_jsonapi_record_invalid(exception)
+      render jsonapi_errors: exception.record.errors, status: :unprocessable_entity
     end
   end
 end
