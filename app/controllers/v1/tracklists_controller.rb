@@ -5,13 +5,13 @@ module V1
     def index
       jsonapi_filter(Tracklist.all, FILTERABLE_FIELDS) do |filtered|
         jsonapi_paginate(filtered.result) do |paginated|
-          render jsonapi: paginated
+          render(jsonapi: paginated)
         end
       end
     end
 
     def show
-      render jsonapi: Tracklist.find(params[:id])
+      render(jsonapi: Tracklist.find(params[:id]))
     end
 
     def create
@@ -29,7 +29,7 @@ module V1
         created_tracklist
       end
 
-      render jsonapi: tracklist, status: :created
+      render(jsonapi: tracklist, status: :created)
     end
 
     private
@@ -39,7 +39,8 @@ module V1
     end
 
     def track_params
-      params.require(:data)
+      params
+        .require(:data)
         .require(:relationships)
         .require(:tracks)
         .require(:data)

@@ -27,7 +27,7 @@ class Tracklists::CreateServiceTest < ActiveSupport::TestCase
     ]
   end
 
-  test "creates tracklist with tracks" do
+  test("creates tracklist with tracks") do
     before_tracklists = Tracklist.count
     before_tracks = Track.count
     before_joins = TracklistsTrack.count
@@ -47,7 +47,7 @@ class Tracklists::CreateServiceTest < ActiveSupport::TestCase
     assert_equal [ 1, 2 ], track_numbers
   end
 
-  test "raises when tracks are missing" do
+  test("raises when tracks are missing") do
     before_tracklists = Tracklist.count
     before_tracks = Track.count
     before_joins = TracklistsTrack.count
@@ -64,7 +64,7 @@ class Tracklists::CreateServiceTest < ActiveSupport::TestCase
     assert_equal before_joins, TracklistsTrack.count
   end
 
-  test "raises when a track creation fails" do
+  test("raises when a track creation fails") do
     before_tracklists = Tracklist.count
     before_tracks = Track.count
     before_joins = TracklistsTrack.count

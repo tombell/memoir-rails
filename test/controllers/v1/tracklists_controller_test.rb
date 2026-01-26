@@ -24,7 +24,7 @@ class V1::TracklistsControllerTest < ActionDispatch::IntegrationTest
     )
   end
 
-  test "index" do
+  test("index") do
     get v1_tracklists_url
 
     assert_response :success
@@ -35,7 +35,7 @@ class V1::TracklistsControllerTest < ActionDispatch::IntegrationTest
     assert_includes body.fetch("data").map { |item| item.fetch("id") }, @tracklist.id
   end
 
-  test "show" do
+  test("show") do
     get v1_tracklist_url(@tracklist)
 
     assert_response :success
@@ -45,7 +45,7 @@ class V1::TracklistsControllerTest < ActionDispatch::IntegrationTest
     assert_equal @tracklist.id, body.dig("data", "id")
   end
 
-  test "create" do
+  test("create") do
     payload = {
       data: {
         type: "tracklist",
