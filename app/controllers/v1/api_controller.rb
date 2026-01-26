@@ -2,6 +2,7 @@ module V1
   class ApiController < ApplicationController
     include JSONAPI::Errors
     include JSONAPI::Fetching
+    include JSONAPI::Filtering
     include JSONAPI::Pagination
 
     MIN_PER_PAGE = 1
