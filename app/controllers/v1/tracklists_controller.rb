@@ -1,9 +1,9 @@
 module V1
   class TracklistsController < ApiController
     def index
-      jsonapi_paginate(Tracklist.all) do |paginated|
-        render jsonapi: paginated
-      end
+      filtered = jsonapi_filter(Tracklist.all, %i[name date])
+      tracklists = jsonapi_paginate(filtered.result)
+      render jsonapi: tracklists
     end
 
     def show
