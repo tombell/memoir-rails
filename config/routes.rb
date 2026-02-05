@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   namespace :v1 do
-    resources :tracklists, only: %i[index show]
+    resources :tracklists, only: %i[index show create]
+    post "operations", to: "operations#create"
   end
 end
