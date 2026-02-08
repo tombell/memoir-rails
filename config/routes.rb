@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   namespace :v1 do
     resources :tracklists, only: %i[index show]
+
+    resources :operations, only: %i[create]
   end
 end
