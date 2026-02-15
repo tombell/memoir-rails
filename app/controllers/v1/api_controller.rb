@@ -32,7 +32,7 @@ module V1
     end
 
     def jsonapi_meta(resources)
-      { pagination: jsonapi_pagination_meta(resources) }.compact_blank
+      {pagination: jsonapi_pagination_meta(resources)}.compact_blank
     end
 
     def render_jsonapi_record_invalid(exception)
