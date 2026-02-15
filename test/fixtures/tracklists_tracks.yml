@@ -1,0 +1,14 @@
+one_one:
+  tracklist: tracklist_one
+  track: track_one
+  track_number: 1
+
+one_two:
+  tracklist: tracklist_one
+  track: track_two
+  track_number: 2
+
+two_one:
+  tracklist: tracklist_two
+  track: track_three
+  track_number: 1

@@ -1,0 +1,17 @@
+tracklist_one:
+  name: Night Drive
+  date: 2025-02-14
+  artwork: https://assets.memoir.example/tracklists/night-drive.jpg
+  url: https://memoir.example/tracklists/night-drive
+
+tracklist_two:
+  name: Summer Vibes
+  date: 2025-07-15
+  artwork: https://assets.memoir.example/tracklists/summer-vibes.jpg
+  url: https://memoir.example/tracklists/summer-vibes
+
+tracklist_three:
+  name: Chill Beats
+  date: 2025-11-20
+  artwork: https://assets.memoir.example/tracklists/chill-beats.jpg
+  url: https://memoir.example/tracklists/chill-beats

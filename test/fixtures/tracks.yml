@@ -1,0 +1,20 @@
+track_one:
+  artist: Phase Violet
+  name: City Glass
+  genre: Electronic
+  key: A minor
+  bpm: 124.0
+
+track_two:
+  artist: Harbor Atlas
+  name: Signal Run
+  genre: House
+  key: F major
+  bpm: 122.0
+
+track_three:
+  artist: Deep House Collective
+  name: Midnight Groove
+  genre: Deep House
+  key: C minor
+  bpm: 128.0
