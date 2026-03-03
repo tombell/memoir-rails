@@ -13,14 +13,14 @@ class V1::TracksControllerTest < ActionDispatch::IntegrationTest
 
   test "creates track" do
     assert_difference("Track.count") do
-      post v1_tracks_url, params: {data: {type: "tracks", attributes: {artist: "New Artist", name: "New Song", genre: "Pop", bpm: 120, key: "C major"}}}, as: :json
+      post v1_tracks_url, params: { data: { type: "tracks", attributes: { artist: "New Artist", name: "New Song", genre: "Pop", bpm: 120, key: "C major" } } }, as: :json
     end
     assert_response :created
   end
 
   test "does not create track with invalid params" do
     assert_no_difference("Track.count") do
-      post v1_tracks_url, params: {data: {type: "tracks", attributes: {artist: "", name: "", genre: "Pop", bpm: 120, key: "C major"}}}, as: :json
+      post v1_tracks_url, params: { data: { type: "tracks", attributes: { artist: "", name: "", genre: "Pop", bpm: 120, key: "C major" } } }, as: :json
     end
     assert_response :unprocessable_entity
   end

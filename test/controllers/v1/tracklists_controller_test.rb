@@ -2,7 +2,7 @@ require "test_helper"
 
 class V1::TracklistsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @headers = {"Accept" => "application/vnd.api+json"}
+    @headers = { "Accept" => "application/vnd.api+json" }
   end
 
   test "get index" do
@@ -16,7 +16,7 @@ class V1::TracklistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "filter by name" do
-    get v1_tracklists_url(filter: {name_eq: "Night Drive"}), headers: @headers
+    get v1_tracklists_url(filter: { name_eq: "Night Drive" }), headers: @headers
     assert_response :success
 
     json = JSON.parse(response.body)
@@ -25,7 +25,7 @@ class V1::TracklistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "filter by date" do
-    get v1_tracklists_url(filter: {date_eq: "2025-07-15"}), headers: @headers
+    get v1_tracklists_url(filter: { date_eq: "2025-07-15" }), headers: @headers
     assert_response :success
 
     json = JSON.parse(response.body)
@@ -34,7 +34,7 @@ class V1::TracklistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "return empty results for non-matching filter" do
-    get v1_tracklists_url(filter: {name_eq: "Nonexistent"}), headers: @headers
+    get v1_tracklists_url(filter: { name_eq: "Nonexistent" }), headers: @headers
     assert_response :success
 
     json = JSON.parse(response.body)
@@ -42,7 +42,7 @@ class V1::TracklistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "paginate with page size" do
-    get v1_tracklists_url(page: {size: 2}), headers: @headers
+    get v1_tracklists_url(page: { size: 2 }), headers: @headers
     assert_response :success
 
     json = JSON.parse(response.body)
@@ -50,7 +50,7 @@ class V1::TracklistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "paginate with page number" do
-    get v1_tracklists_url(page: {size: 1, number: 2}), headers: @headers
+    get v1_tracklists_url(page: { size: 1, number: 2 }), headers: @headers
     assert_response :success
 
     json = JSON.parse(response.body)
@@ -59,7 +59,7 @@ class V1::TracklistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "clamp page size to max" do
-    get v1_tracklists_url(page: {size: 200}), headers: @headers
+    get v1_tracklists_url(page: { size: 200 }), headers: @headers
     assert_response :success
 
     json = JSON.parse(response.body)
@@ -83,7 +83,7 @@ class V1::TracklistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "handle invalid filter parameter gracefully" do
-    get v1_tracklists_url(filter: {invalid_field_eq: "value"}), headers: @headers
+    get v1_tracklists_url(filter: { invalid_field_eq: "value" }), headers: @headers
     assert_response :success
 
     json = JSON.parse(response.body)
