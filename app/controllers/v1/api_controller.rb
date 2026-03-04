@@ -20,9 +20,11 @@ module V1
         resource.class
       end
 
-      "V1::#{resource_class.name}Serializer".constantize
-    rescue NameError
-      JSONAPI::Rails.serializer_class(resource, is_collection)
+      begin
+        "V1::#{resource_class.name}Serializer".constantize
+      rescue NameError
+        JSONAPI::Rails.serializer_class(resource, is_collection)
+      end
     end
 
     def jsonapi_page_size(pagination_params)
