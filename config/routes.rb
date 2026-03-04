@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   namespace :v1 do
     resources :tracklists, only: %i[index show create update destroy]
     resources :tracks, only: %i[show create update destroy]
+    post "operations", to: "operations#create"
   end
 end
