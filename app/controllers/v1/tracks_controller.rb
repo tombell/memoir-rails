@@ -5,13 +5,26 @@ module V1
     end
 
     def create
-      track = Track.new(track_params)
+      track = Tracks::CreateService.call(track: track_params)
+      render jsonapi: track, status: :created
+    rescue ActiveRecord::RecordInvalid => e
+      render jsonapi_errors: e.record.errors, status: :unprocessable_entity
+    end
 
-      if track.save
-        render jsonapi: track, status: :created
-      else
-        render jsonapi_errors: track.errors, status: :unprocessable_entity
-      end
+    def update
+      track = Tracks::UpdateService.call(id: params[:id], track: track_params)
+      render jsonapi: track
+    rescue ActiveRecord::RecordInvalid => e
+      render jsonapi_errors: e.record.errors, status: :unprocessable_entity
+    rescue ActiveRecord::RecordNotFound => e
+      render jsonapi_errors: [ { title: "Not Found", detail: e.message } ], status: :not_found
+    end
+
+    def destroy
+      Tracks::DeleteService.call(id: params[:id])
+      head :no_content
+    rescue ActiveRecord::RecordNotFound => e
+      render jsonapi_errors: [ { title: "Not Found", detail: e.message } ], status: :not_found
     end
 
     private
