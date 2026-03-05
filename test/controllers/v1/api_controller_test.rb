@@ -22,5 +22,5 @@ class V1::ApiControllerTest < ActionController::TestCase
     assert_raises NameError do
       @controller.send(:jsonapi_serializer_class, resource, false)
     end
-end
+  end
 end
