@@ -7,6 +7,7 @@ gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
 gem "rails", "~> 8.1.2"
 gem "ransack", "~> 4.4", ">= 4.4.1"
+gem "coverband"
 gem "solid_cache"
 gem "solid_queue"
 gem "thruster", require: false
@@ -17,4 +18,5 @@ group :development, :test do
   gem "bundler-audit", require: false
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
   gem "rubocop-rails-omakase", require: false
+  gem "simplecov", require: false
 end
